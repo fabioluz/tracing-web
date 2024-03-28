@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.55
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=9411
+      #- COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "6831:6831/udp" # jaeger proto
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686" # ui
+      - "14268:14268"
+      - "9411:9411"
+      - "4318:4318"
+      - "4317:4317"
+      - "14250:14250"
+      - "14269:14269"
