@@ -48,8 +48,9 @@ builder
     .Services
     .AddHttpClient();
 
-var app = builder.Build();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
 
-app.MapGet("/posts", HandleAllPosts);
-
-app.Run();
+builder
+    .Build()
+    .MapGet("/posts", HandleAllPosts)
+    .Run($"http://localhost:{port}");
